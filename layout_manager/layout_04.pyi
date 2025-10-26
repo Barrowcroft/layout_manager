@@ -10,6 +10,8 @@ from typing import Tuple, Union
 
 import customtkinter as ct
 
+def register() -> Tuple[str, type[ct.CTkFrame]]: ...
+
 class Layout04(ct.CTkFrame):
     """Layout 04"""
 

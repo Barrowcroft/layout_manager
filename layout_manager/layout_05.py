@@ -11,6 +11,11 @@ import customtkinter as ct
 BOTTOM = 30
 
 
+def register() -> Tuple[str, ct.CTkFrame]:
+    """Registers the layout."""
+    return ("layout_05", Layout05)  # type: ignore
+
+
 class Layout05(ct.CTkFrame):  # pylint: disable=too-many-ancestors
     """Layout 05"""
 

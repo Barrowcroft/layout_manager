@@ -13,6 +13,11 @@ BOTTOM = 30
 LEFT = 200
 
 
+def register() -> Tuple[str, ct.CTkFrame]:
+    """Registers the layout."""
+    return ("layout_07", Layout07)  # type: ignore
+
+
 class Layout07(ct.CTkFrame):  # pylint: disable=too-many-ancestors
     """Layout 07"""
 

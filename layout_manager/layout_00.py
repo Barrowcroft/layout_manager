@@ -9,6 +9,11 @@ import customtkinter as ct
 # pyright: reportMissingTypeStubs = false
 
 
+def register() -> Tuple[str, ct.CTkFrame]:
+    """Registers the layout."""
+    return ("layout_00", Layout00)  # type: ignore
+
+
 class Layout00(ct.CTkFrame):  # pylint: disable=too-many-ancestors
     """Layout 00"""
 
