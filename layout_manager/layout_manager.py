@@ -5,7 +5,7 @@
 # pyright: reportMissingTypeStubs = false
 
 import importlib
-import os
+import pathlib
 from typing import Any, Tuple
 
 import customtkinter as ct
@@ -21,24 +21,19 @@ class LayoutManager:
     def import_layouts(self) -> None:
         """Imports layouts."""
 
-        _current_dir: str = ""
+        _current_dir: pathlib.Path | None = None
 
         try:
-            _current_dir = os.path.dirname(os.path.abspath(__file__))
-            _file_names = os.listdir(_current_dir)
-
-            # Filter only Python files.
-
-            _search_modules = [
-                f
-                for f in _file_names
-                if os.path.isfile(os.path.join(_current_dir, f)) and f.endswith(".py")
+            _current_dir = pathlib.Path(__file__).resolve().parent
+            _file_names = [
+                f.name
+                for f in _current_dir.iterdir()
+                if f.is_file() and f.suffix == ".py"
             ]
-            _search_modules = sorted(_search_modules)
 
             # Dynamically import modules
 
-            for _module_name in _search_modules:
+            for _module_name in _file_names:
                 full_module_name = (
                     f"layout_manager.{_module_name[:-3]}"  # Remove .py extension
                 )
